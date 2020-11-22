@@ -217,7 +217,8 @@ function rgb2q(r, g, b) { return r * 0.21147017 - g * 0.52261711 + b * 0.3111469
 
 // blend semi-transparent color with white
 function blend(c, a) {
-    return 255 + (c - 255) * a;
+    var b = (c + 128) % 256;
+    return b + (c - b) * a;
 }
 
 function drawPixel(output, pos, r, g, b) {
